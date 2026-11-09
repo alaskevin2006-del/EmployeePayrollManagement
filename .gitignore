@@ -1,3 +1,7 @@
+# 演示文稿（二进制大文件，不纳入版本管理）
+*.pptx
+*.ppt
+
 # Office 临时文件（打开 pptx/docx/xlsx 时自动生成）
 ~$*
 *.tmp
