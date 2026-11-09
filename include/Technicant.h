@@ -10,10 +10,18 @@ class Technicant : public Person {
         }
 
     public:
-        Technicant(double workHours = 0, string name = "unknown", int level = 3, double monthlySalary = 18000)
-            : workHours(workHours), Person(name, 3, 18000){}
+        Technicant(double workHours = 0, string name = "unknown")
+            : workHours(workHours), Person(name, 3, 0) {}
 
         ~Technicant(){}
+
+        double getWorkHours() {
+            return workHours;
+        }
+
+        void setWorkHours(double workHours) {
+            this->workHours = workHours;
+        }
         
         double getMonthlySalary() override {
             pay();

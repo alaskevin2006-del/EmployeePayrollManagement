@@ -18,6 +18,14 @@ class Salemanager : public Manager, public Saleman {
 
         ~Salemanager(){}
 
+        double getDepartmentSales() {
+            return departmentSales;
+        }
+
+        void setDepartmentSales(double departmentSales) {
+            this->departmentSales = departmentSales;
+        }
+
         double getMonthlySalary() final {
             pay();
             return monthlySalary;

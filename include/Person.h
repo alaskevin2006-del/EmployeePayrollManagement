@@ -25,12 +25,11 @@ class Person {
                 id = 2000 + count;
         }
 
-        ~Person(){}
-
         virtual ~Person() = default;
 
         bool setLevel(int level) {
-            return this->level = level;
+            this->level = level;
+            return this->level >= 1 && this->level <=4;
         }
 
         int getId() {
