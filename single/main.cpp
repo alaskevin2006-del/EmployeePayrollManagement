@@ -484,7 +484,7 @@ namespace {
                 return n;
             }
 
-            cout << "è¾“å…¥æ— æ•ˆï¼Œè¯·é‡æ–°è¾“å…¥ã€‚\n";
+            cout << "ÊäÈëÎŞĞ§£¬ÇëÖØĞÂÊäÈë¡£\n";
             cin.clear();
             cin.ignore(
                 numeric_limits<streamsize>::max(), '\n'
@@ -504,18 +504,18 @@ namespace {
 }
 
 void UI::drawMenu() const {
-    cout << "\n******** å…¬å¸èŒå·¥è–ªé…¬ç®¡ç†ç³»ç»Ÿ ********\n"
-         << "1. å½•å…¥èŒå·¥èµ„æ–™ï¼ˆè¦†ç›–åŸæ•°æ®ï¼‰\n"
-         << "2. å¢åŠ èŒå·¥\n"
-         << "3. åˆ é™¤èŒå·¥\n"
-         << "4. æœˆè–ªå‘æ”¾\n"
-         << "5. æ˜¾ç¤ºå·¥èµ„è¡¨\n"
-         << "0. é€€å‡ºç³»ç»Ÿ\n"
+    cout << "\n******** ¹«Ë¾Ö°¹¤Ğ½³ê¹ÜÀíÏµÍ³ ********\n"
+         << "1. Â¼ÈëÖ°¹¤×ÊÁÏ£¨¸²¸ÇÔ­Êı¾İ£©\n"
+         << "2. Ôö¼ÓÖ°¹¤\n"
+         << "3. É¾³ıÖ°¹¤\n"
+         << "4. ÔÂĞ½·¢·Å\n"
+         << "5. ÏÔÊ¾¹¤×Ê±í\n"
+         << "0. ÍË³öÏµÍ³\n"
          << "************************************\n";
 }
 
 Page UI::handleKeyboard() const {
-    int choice = readNumber("è¯·é€‰æ‹©ï¼š", 0, 5);
+    int choice = readNumber("ÇëÑ¡Ôñ£º", 0, 5);
 
     switch (choice) {
         case 1: return Page::INPUTINFO;
@@ -531,7 +531,7 @@ bool UI::drawInputInfo(
     vector<pair<string, int>>& data
 ) const {
     string confirm = readName(
-        "è¦†ç›–åŸæœ‰èŒå·¥èµ„æ–™ï¼Œç¡®è®¤ç»§ç»­ï¼Ÿ(Y/N)ï¼š"
+        "¸²¸ÇÔ­ÓĞÖ°¹¤×ÊÁÏ£¬È·ÈÏ¼ÌĞø£¿(Y/N)£º"
     );
 
     if (confirm != "Y" && confirm != "y") {
@@ -539,16 +539,16 @@ bool UI::drawInputInfo(
     }
 
     const char* titles[] = {
-        "ç»ç†", "æŠ€æœ¯å‘˜", "é”€å”®ç»ç†", "æ¨é”€å‘˜"
+        "¾­Àí", "¼¼ÊõÔ±", "ÏúÊÛ¾­Àí", "ÍÆÏúÔ±"
     };
     const int levels[] = {4, 3, 2, 1};
 
     for (int i = 0; i < 4; ++i) {
-        cout << "\nå½•å…¥" << titles[i]
-             << "å§“åï¼ˆè¾“å…¥ @ ç»“æŸæœ¬ç»„ï¼‰ï¼š\n";
+        cout << "\nÂ¼Èë" << titles[i]
+             << "ĞÕÃû£¨ÊäÈë @ ½áÊø±¾×é£©£º\n";
 
         while (true) {
-            string name = readName("å§“åï¼š");
+            string name = readName("ĞÕÃû£º");
 
             if (name == "@") break;
 
@@ -562,12 +562,12 @@ bool UI::drawInputInfo(
 bool UI::drawAddEmployee(
     string& name, int& level
 ) const {
-    name = readName("è¾“å…¥èŒå·¥å§“åï¼ˆ@ å–æ¶ˆï¼‰ï¼š");
+    name = readName("ÊäÈëÖ°¹¤ĞÕÃû£¨@ È¡Ïû£©£º");
 
     if (name == "@") return false;
 
     level = readNumber(
-        "è¾“å…¥çº§åˆ«ï¼ˆ4ç»ç† 3æŠ€æœ¯å‘˜ 2é”€å”®ç»ç† 1æ¨é”€å‘˜ï¼‰ï¼š",
+        "ÊäÈë¼¶±ğ£¨4¾­Àí 3¼¼ÊõÔ± 2ÏúÊÛ¾­Àí 1ÍÆÏúÔ±£©£º",
         1, 4
     );
 
@@ -576,7 +576,7 @@ bool UI::drawAddEmployee(
 
 int UI::drawDeleteEmployee() const {
     return readNumber(
-        "è¾“å…¥è¦åˆ é™¤çš„èŒå·¥ç¼–å·ï¼š",
+        "ÊäÈëÒªÉ¾³ıµÄÖ°¹¤±àºÅ£º",
         2001, 2147483647
     );
 }
@@ -586,14 +586,14 @@ vector<pair<int, int>> UI::drawMonthPay(
 ) const {
     vector<pair<int, int>> data;
 
-    cout << "\nå½•å…¥æœ¬æœˆå·¥ä½œæ•°æ®ï¼š\n";
+    cout << "\nÂ¼Èë±¾ÔÂ¹¤×÷Êı¾İ£º\n";
 
     for (Person* p : employees) {
         if (p->getLevel() == 3) {
             int hours = readNumber(
-                "æŠ€æœ¯å‘˜ " + p->getName() +
-                "ï¼ˆç¼–å· " + to_string(p->getId()) +
-                "ï¼‰å·¥ä½œå°æ—¶æ•°ï¼š",
+                "¼¼ÊõÔ± " + p->getName() +
+                "£¨±àºÅ " + to_string(p->getId()) +
+                "£©¹¤×÷Ğ¡Ê±Êı£º",
                 0, 214748
             );
 
@@ -601,9 +601,9 @@ vector<pair<int, int>> UI::drawMonthPay(
         }
         else if (p->getLevel() == 1) {
             int sales = readNumber(
-                "æ¨é”€å‘˜ " + p->getName() +
-                "ï¼ˆç¼–å· " + to_string(p->getId()) +
-                "ï¼‰é”€å”®é¢ï¼ˆå…ƒï¼‰ï¼š",
+                "ÍÆÏúÔ± " + p->getName() +
+                "£¨±àºÅ " + to_string(p->getId()) +
+                "£©ÏúÊÛ¶î£¨Ôª£©£º",
                 0, 21474836
             );
 
@@ -611,9 +611,9 @@ vector<pair<int, int>> UI::drawMonthPay(
         }
         else if (p->getLevel() == 2) {
             int sales = readNumber(
-                "é”€å”®ç»ç† " + p->getName() +
-                "ï¼ˆç¼–å· " + to_string(p->getId()) +
-                "ï¼‰éƒ¨é—¨é”€å”®æ€»é¢ï¼ˆå…ƒï¼‰ï¼š",
+                "ÏúÊÛ¾­Àí " + p->getName() +
+                "£¨±àºÅ " + to_string(p->getId()) +
+                "£©²¿ÃÅÏúÊÛ×Ü¶î£¨Ôª£©£º",
                 0, 21474836
             );
 
@@ -621,8 +621,8 @@ vector<pair<int, int>> UI::drawMonthPay(
         }
     }
 
-    cout << "ç»ç†æŒ‰å›ºå®šå·¥èµ„ï¼›é”€å”®ç»ç†æŒ‰å…¨éƒ¨æ¨é”€å‘˜"
-         << "é”€å”®æ€»é¢è®¡ç®—ææˆã€‚\n";
+    cout << "¾­Àí°´¹Ì¶¨¹¤×Ê£»ÏúÊÛ¾­Àí°´È«²¿ÍÆÏúÔ±"
+         << "ÏúÊÛ×Ü¶î¼ÆËãÌá³É¡£\n";
 
     return data;
 }
@@ -631,13 +631,13 @@ void UI::drawShowSalary(
     const vector<Person*>& employees,
     long long total
 ) const {
-    cout << "\nèŒå·¥è–ªé…¬è¡¨\n";
+    cout << "\nÖ°¹¤Ğ½³ê±í\n";
 
     cout << left
-         << setw(12) << "å·¥å·"
-         << setw(20) << "å§“å"
-         << setw(10) << "çº§åˆ«"
-         << "æœˆå·¥èµ„ï¼ˆå…ƒï¼‰\n";
+         << setw(12) << "¹¤ºÅ"
+         << setw(20) << "ĞÕÃû"
+         << setw(10) << "¼¶±ğ"
+         << "ÔÂ¹¤×Ê£¨Ôª£©\n";
 
     cout << fixed << setprecision(2);
 
@@ -649,7 +649,7 @@ void UI::drawShowSalary(
              << p->getMonthlySalary() << '\n';
     }
 
-    cout << "åˆè®¡ï¼š" << total / 100.0 << " å…ƒ\n";
+    cout << "ºÏ¼Æ£º" << total / 100.0 << " Ôª\n";
 }
 
 void UI::showMessage(const string& message) const {
@@ -657,7 +657,7 @@ void UI::showMessage(const string& message) const {
 }
 
 void UI::pause() const {
-    cout << "æŒ‰å›è½¦é”®è¿”å›ä¸»èœå•...";
+    cout << "°´»Ø³µ¼ü·µ»ØÖ÷²Ëµ¥...";
     cin.get();
 }
 
@@ -688,17 +688,17 @@ void App::run() {
                 vector<pair<string, int>> data;
 
                 if (!ui.drawInputInfo(data)) {
-                    ui.showMessage("å·²å–æ¶ˆå½•å…¥ã€‚");
+                    ui.showMessage("ÒÑÈ¡ÏûÂ¼Èë¡£");
                 }
                 else if (service.inputInfo(data)) {
-                    ui.showMessage("å½•å…¥æˆåŠŸã€‚");
+                    ui.showMessage("Â¼Èë³É¹¦¡£");
 
                     if (!service.saveToFile(filename)) {
-                        ui.showMessage("è­¦å‘Šï¼šæ–‡ä»¶ä¿å­˜å¤±è´¥ã€‚");
+                        ui.showMessage("¾¯¸æ£ºÎÄ¼ş±£´æÊ§°Ü¡£");
                     }
                 }
                 else {
-                    ui.showMessage("å½•å…¥å¤±è´¥ã€‚");
+                    ui.showMessage("Â¼ÈëÊ§°Ü¡£");
                 }
 
                 break;
@@ -713,15 +713,15 @@ void App::run() {
 
                     if (id > 0) {
                         ui.showMessage(
-                            "æ·»åŠ æˆåŠŸï¼ŒèŒå·¥ç¼–å·ï¼š" + to_string(id)
+                            "Ìí¼Ó³É¹¦£¬Ö°¹¤±àºÅ£º" + to_string(id)
                         );
 
                         if (!service.saveToFile(filename)) {
-                            ui.showMessage("è­¦å‘Šï¼šæ–‡ä»¶ä¿å­˜å¤±è´¥ã€‚");
+                            ui.showMessage("¾¯¸æ£ºÎÄ¼ş±£´æÊ§°Ü¡£");
                         }
                     }
                     else {
-                        ui.showMessage("æ·»åŠ å¤±è´¥ã€‚");
+                        ui.showMessage("Ìí¼ÓÊ§°Ü¡£");
                     }
                 }
 
@@ -733,11 +733,11 @@ void App::run() {
                 bool ok = service.deleteEmployee(id);
 
                 ui.showMessage(
-                    ok ? "åˆ é™¤æˆåŠŸã€‚" : "æœªæ‰¾åˆ°è¯¥èŒå·¥ã€‚"
+                    ok ? "É¾³ı³É¹¦¡£" : "Î´ÕÒµ½¸ÃÖ°¹¤¡£"
                 );
 
                 if (ok && !service.saveToFile(filename)) {
-                    ui.showMessage("è­¦å‘Šï¼šæ–‡ä»¶ä¿å­˜å¤±è´¥ã€‚");
+                    ui.showMessage("¾¯¸æ£ºÎÄ¼ş±£´æÊ§°Ü¡£");
                 }
 
                 break;
@@ -752,7 +752,7 @@ void App::run() {
 
                 if (total < 0) {
                     ui.showMessage(
-                        "å·¥èµ„è®¡ç®—å¤±è´¥ï¼šæ•°æ®ä¸åˆæ³•ã€‚"
+                        "¹¤×Ê¼ÆËãÊ§°Ü£ºÊı¾İ²»ºÏ·¨¡£"
                     );
                 }
                 else {
@@ -761,11 +761,11 @@ void App::run() {
                         << total / 100.0;
 
                     ui.showMessage(
-                        "å·¥èµ„æ€»é¢ï¼š" + out.str() + " å…ƒ"
+                        "¹¤×Ê×Ü¶î£º" + out.str() + " Ôª"
                     );
 
                     if (!service.saveToFile(filename)) {
-                        ui.showMessage("è­¦å‘Šï¼šæ–‡ä»¶ä¿å­˜å¤±è´¥ã€‚");
+                        ui.showMessage("¾¯¸æ£ºÎÄ¼ş±£´æÊ§°Ü¡£");
                     }
                 }
 
