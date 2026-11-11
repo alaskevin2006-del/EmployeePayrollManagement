@@ -79,7 +79,7 @@ private:
     int workMinutes = 0;
 
     void pay() override {
-        salary = workMinutes * 10000 / 60;
+        salary = static_cast<int>(1LL * workMinutes * 10000 / 60);
     }
 
 public:
@@ -104,7 +104,7 @@ private:
     int sales = 0;
 
     void pay() override {
-        salary = sales * 4 / 100;
+        salary = static_cast<int>(1LL * sales * 4 / 100);
     }
 
 public:
@@ -127,7 +127,7 @@ public:
 class SaleManager : public Saleman, public Manager {
 private:
     void pay() override {
-        salary = 500000 + getSales() * 2 / 100;
+        salary = 500000 + static_cast<int>(1LL * getSales() * 2 / 100);
     }
 
 public:

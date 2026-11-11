@@ -6,7 +6,7 @@ private:
     int workMinutes = 0;
 
     void pay() override {
-        salary = workMinutes * 10000 / 60;
+        salary = static_cast<int>(1LL * workMinutes * 10000 / 60);
     }
 
 public:

@@ -6,7 +6,7 @@ private:
     int sales = 0;  // 单位：分
 
     void pay() override {
-        salary = sales * 4 / 100;
+        salary = static_cast<int>(1LL * sales * 4 / 100);
     }
 
 public:
