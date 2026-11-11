@@ -39,3 +39,6 @@ build/
 
 # 运行时数据
 employees.txt
+
+# 文档流水线中间产物
+output/
