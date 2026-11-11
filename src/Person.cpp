@@ -1,3 +1,3 @@
-#include "Person.h"
+#include "Employee/Person.h"
 
-int Person::count = 0;
+int Person::nextId = 2001;
